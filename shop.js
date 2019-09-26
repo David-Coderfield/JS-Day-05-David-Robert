@@ -47,6 +47,7 @@ inventory(items);
 //SHOPPING CARD STUFF
 var cart = [];
 
+//WHEN USER CLICKS A BUTTON: CHECK IF ITEM IS ALREADY IN CART. ELSE: PUSH IT
 function addToCart(i) {
 	var newItem = true;
 	for (let j = 0; j < cart.length; j++) {
@@ -63,8 +64,8 @@ function addToCart(i) {
 	Update();
 }
 
-function Update() {
 //UPDATE CART IN HTML TABLE
+function Update() {
 	var T = document.getElementById('shoptable');
 		T.innerHTML = "";
 	for (let k = 0; k < cart.length; k++) {
@@ -76,7 +77,7 @@ function Update() {
 		"<input type='button' value='remove' onclick='Del(" + k + ")'>" + "</td></tr>";
 	}
 
-//RAW SUM OF ALL PRODUCTS (prices*amounts)
+	//RAW SUM OF ALL PRODUCTS (prices*amounts)
 	$rawSum = 0;
 	for (let j = 0; j < cart.length; j++) {
 		$rawSum+=cart[j].amount*cart[j].price;
@@ -84,6 +85,7 @@ function Update() {
 
 	var $totalSum = $rawSum;
 
+	//@ #Dennis & All: Pls checkout "ternary operators" for the next part. It's much simpler than if-statements ;)
 	var shipping = ($rawSum < 80) ? 9 : 6;
 	var tax = $rawSum * 0.22;
 	$totalSum+=shipping+tax;

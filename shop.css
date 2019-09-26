@@ -28,7 +28,7 @@ li a {
 }
 
 li a:hover {
-	background-color: #0841a1;
+	background-color: #0841a1; /* make same shade a little darker */
 }
 
 #openCart {
@@ -57,7 +57,7 @@ input[type=number] {
 .item {
 	width: 200px;
 	border: 1px solid red;
-	margin: 1.2vw;
+	margin: 0.9vw;/*  displays 4 columns in 1080p */
 }
 
 .item img {
@@ -103,6 +103,7 @@ table * {
 }
 
 table {
+  margin: 5px;
   border: 2px solid #000;
   border-collapse: collapse;
 }
