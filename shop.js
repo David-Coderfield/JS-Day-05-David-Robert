@@ -1,48 +1,141 @@
-var items = [];
-var prices = [];
-var amount = [];
 
-function Shop(item, price) {
+function ItemConstructor(id, name, price, image) {
+	this.id = id;
+	this.name = name;
+	this.price = price;
+	this.image = '<img src="' + image + '" class="itempic">';
+	this.amount = 0;
+}
+
+var item0 = new ItemConstructor(0, 'Basic Item Numero Zorro', 0.01, 'https://via.placeholder.com/200x200.png?text=Item0');
+var item1 = new ItemConstructor(1, 'Fancy Item Numero Uno', 9.90, 'https://via.placeholder.com/200x200.png?text=Item1');
+var item2 = new ItemConstructor(2, 'Super Fancy Item Numero Duo', 19.90, 'https://via.placeholder.com/200x200.png?text=Item2');
+var item3 = new ItemConstructor(3, 'Mega Fancy Item Numero Tres', 29.90, 'https://via.placeholder.com/200x200.png?text=Item3');
+var item4 = new ItemConstructor(4, 'Ultra Fancy Item Numero Quattro', 39.90, 'https://via.placeholder.com/200x200.png?text=Item4');
+var item5 = new ItemConstructor(5, 'Superduper Fancy Item Numero ', 49.90, 'https://via.placeholder.com/200x200.png?text=Item5');
+
+var items = [item0, item1, item2, item3, item4, item5];
+
+function itemPlacer(item) {
+	var newDiv = document.createElement("div");
+	newDiv.innerHTML = eval(item).image + "<p>" + eval(item).name + "</p><p>" + eval(item).price + "</p> <input type='button' value='Add to Cart' class='btn'>"
+	newDiv.className = "item";
+	document.getElementById("product-wrapper").appendChild(newDiv);
+	}
+
+function inventory(array) {
+	for (let i=0; i<array.length; i++) {
+		itemPlacer(array[i]);
+	}
+	var buttons = document.getElementsByClassName('btn');
+	for (let i=0;i<buttons.length;i++) {
+		buttons[i].addEventListener('click', function() {
+												addToCart(i);
+													})}
+}
+
+inventory(items);
+
+var cart = [];
+
+function addToCart(i) {
 	var newItem = true;
-	for (i = 0; i < items.length; i++) {
-		if (item == items[i]) {
-			amount[i]++;
+	for (let j = 0; j < cart.length; j++) {
+		if (i == cart[j].id) {
+			cart[j].amount++;
 			newItem = false;
 		}
 	}
 	if (newItem) {
-	items.push(item);
-	prices.push(price);
-	amount.push(1);
+	cart.push(items[i]);
+	cart[cart.length-1].amount++;
 	}
+	console.log(cart);
 	Update();
 }
 
-
 function Update() {
-	var sum = 0;
-	for (j = 0; j < items.length; j++) {
-		sum+=amount[j]*prices[j];
+	sum = 0;
+	for (let j = 0; j < cart.length; j++) {
+		sum+=cart[j].amount*cart[j].price;
 	}
 
 	var T = document.getElementById('shoptable');
 		T.innerHTML = "";
-	for (k = 0; k < items.length; k++) {
-		T.innerHTML += "<tr><td>" + items[k] + "</td><td>" + prices[k] + "</td><td>" + amount[k] + "</td><td>" +
+	for (let k = 0; k < cart.length; k++) {
+		T.innerHTML += "<tr><td>" + cart[k].name + "</td><td>" + cart[k].price + 
+		"</td><td>" +
+		"<input type='number' value='" + cart[k].amount + "' onchange='changeAmnt(" + 
+		k +", this.value" + ")'>"
+		+ "</td><td>" +
 		"<input type='button' value='remove' onclick='Del(" + k + ")'>" + "</td></tr>";
 	}
 
-	document.getElementById('sum').innerHTML = "The sum is €" + sum.toFixed(2);
+
+	function shippingCost() {
+		var x;
+		if (sum > 80) {
+			x = 6;
+		} else {
+			x = 9;
+		}
+		return(x);
+	}
+
+	var shipping = shippingCost();
+	
+	var tax = sum * 0.22;
+	sum += tax;
+	sum += shipping;
+
+	function discount() {
+		var y;
+		if(sum < 40) {
+			y = 0;
+		} else if (sum < 100) {
+			y = sum*0.07;
+		} else {
+			y = sum*0.12;
+		}
+		return(y)
+	}
+
+	disc = discount();
+	
+	sum -= disc;
+	
+	document.getElementById('shipping').innerHTML = "Shipping Costs: " + shipping + "€";
+	document.getElementById('tax').innerHTML = "Tax (22%): " + tax.toFixed(2) + "€";
+	document.getElementById('disc').innerHTML = "Discount: -" + disc.toFixed(2) + "€";
+	document.getElementById('sum').innerHTML = "Total Cost: " + sum.toFixed(2) + "€";
 }
 
 function Del(k) {
-	if (amount[k] > 1) {
-		amount[k]--;
-	}
-	else {
-	items.splice(k,1);
-	prices.splice(k,1);
-	amount.splice(k,1);
+	cart[k].amount = 0;
+	cart.splice(k,1);
+	Update();
+}
+
+function changeAmnt(k, n) {
+	cart[k].amount = n;
+	if (cart[k].amount <= 0) {
+		cart[k].amount = 0;
+		cart.splice(k,1);		
 	}
 	Update();
+}
+
+var hidden = true;
+function showCart() {
+	if(hidden){
+		document.getElementById('link').innerHTML = 'Hide Cart';
+		document.getElementById('shoppingCart').style.display = 'flex';
+		document.getElementById('product-wrapper').style.width = '70%';
+		hidden = false;
+	} else {
+		document.getElementById('link').innerHTML = 'Show Cart';
+		document.getElementById('shoppingCart').style.display = 'none';
+		document.getElementById('product-wrapper').style.width = '100%';
+		hidden = true;
+	}
 }
