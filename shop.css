@@ -70,6 +70,7 @@ input[type=number] {
   flex-wrap: wrap;
   flex-flow:  column;
   display: none;
+  padding: 7px;
 }
 
 

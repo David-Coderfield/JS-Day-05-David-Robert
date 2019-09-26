@@ -1,4 +1,4 @@
-
+//CREATE OBJECT UPON PASSED PARAMETERS
 function ItemConstructor(id, name, price, image) {
 	this.id = id;
 	this.name = name;
@@ -7,6 +7,7 @@ function ItemConstructor(id, name, price, image) {
 	this.amount = 0;
 }
 
+//USUALLY GET THESE FROM BACKEND
 var item0 = new ItemConstructor(0, 'Basic Item Numero Zorro', 0.00, 'https://via.placeholder.com/200x200.png?text=Item0');
 var item1 = new ItemConstructor(1, 'Fancy Item Numero Uno', 9.90, 'https://via.placeholder.com/200x200.png?text=Item1');
 var item2 = new ItemConstructor(2, 'Super Fancy Item Numero Duo', 19.90, 'https://via.placeholder.com/200x200.png?text=Item2');
@@ -15,10 +16,11 @@ var item4 = new ItemConstructor(4, 'Ultra Fancy Item Numero Quattro', 39.90, 'ht
 var item5 = new ItemConstructor(5, 'High Five Machine', 49.90, 'https://via.placeholder.com/200x200.png?text=Item5');
 var item6 = new ItemConstructor(6, 'Sexy Item', 59.90, 'https://via.placeholder.com/200x200.png?text=Item6');
 var item7 = new ItemConstructor(7, 'Lucky Number "you want this"', 70, 'https://via.placeholder.com/200x200.png?text=Item7');
-var item8 = new ItemConstructor(8, 'Too l8 good n8', 80, 'https://via.placeholder.com/200x200.png?text=Item8');
+var item8 = new ItemConstructor(8, "2 l8 good n8 don't f8", 80, 'https://via.placeholder.com/200x200.png?text=Item8');
 var item9 = new ItemConstructor(9, 'Buy this when September ends', 90, 'https://via.placeholder.com/200x200.png?text=Item9');
 var item10 = new ItemConstructor(10, "NOW THAT'S AN ITEM", 1000, 'https://via.placeholder.com/200x200.png?text=Item10');
 
+//PUT THEM IN AN ARRAY
 var items = [item0, item1, item2, item3, item4, item5, item6, item7, item8, item9, item10];
 
 // CREATE NEW DIV AND CONTENT FOR EACH ITEM
@@ -101,12 +103,14 @@ function Update() {
 	document.getElementById('sum').innerHTML = "<b>Total Amount: " + $totalSum.toFixed(2) + "€</b>";
 }
 
+//GET RID OF ITEM
 function Del(k) {
 	cart[k].amount = 0;
 	cart.splice(k,1);
 	Update();
 }
 
+//IF USER USES NUMBER INPUT FIELD
 function changeAmnt(k, n) {
 	cart[k].amount = n;
 	if (cart[k].amount <= 0) {
@@ -117,7 +121,7 @@ function changeAmnt(k, n) {
 }
 
 //SHOW & HIDE THE SHOPPING CART
-var hidden = true;
+var hidden = true; //global var to show status of hiding
 function showCart() {
 	if(hidden){
 		document.getElementById('link').innerHTML = 'Hide Cart';
