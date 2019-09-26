@@ -97,8 +97,9 @@ footer {
     color: blue; } 
   }
 
-table td {
+table * {
   border: 1px solid #000;
+  font-size: 20px;
 }
 
 table {
@@ -107,8 +108,11 @@ table {
 }
 
 .costs {
-	padding: 0 !important;
+	padding: 0 0 0 6px;
 	margin-top: 4px;
 	margin-bottom: 0px;
+}
 
+#disc {
+	border-bottom: 1px solid #000;
 }
