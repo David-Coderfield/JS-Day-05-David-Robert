@@ -59,11 +59,7 @@ function addToCart(i) {
 }
 
 function Update() {
-	sum = 0;
-	for (let j = 0; j < cart.length; j++) {
-		sum+=cart[j].amount*cart[j].price;
-	}
-
+//UPDATE CART IN HTML TABLE
 	var T = document.getElementById('shoptable');
 		T.innerHTML = "";
 	for (let k = 0; k < cart.length; k++) {
@@ -75,43 +71,50 @@ function Update() {
 		"<input type='button' value='remove' onclick='Del(" + k + ")'>" + "</td></tr>";
 	}
 
+//RAW SUM OF ALL PRODUCTS (prices*amounts)
+	$rawsum = 0;
+	for (let j = 0; j < cart.length; j++) {
+		$rawsum+=cart[j].amount*cart[j].price;
+	}
 
-	function shippingCost() {
+	var shipping = ($rawsum < 80) ? 9 : 6;
+
+//OLD FUNCTION:
+/*	function shippingCost() {
 		var x;
-		if (sum > 80) {
+		if ($rawsum > 80) {
 			x = 6;
 		} else {
 			x = 9;
 		}
 		return(x);
 	}
-
-	var shipping = shippingCost();
+	var shipping = shippingCost();*/
 	
-	var tax = sum * 0.22;
-	sum += tax;
-	sum += shipping;
+	var tax = $rawsum * 0.22;
+	$rawsum += tax;
+	$rawsum += shipping;
 
 	function discount() {
 		var y;
-		if(sum < 40) {
+		if($rawsum < 40) {
 			y = 0;
-		} else if (sum < 100) {
-			y = sum*0.07;
+		} else if ($rawsum < 100) {
+			y = $rawsum*0.07;
 		} else {
-			y = sum*0.12;
+			y = $rawsum*0.12;
 		}
 		return(y)
 	}
 
 	disc = discount();
 	
-	sum -= disc;
+	$rawsum -= disc;
 	
 	document.getElementById('shipping').innerHTML = "Shipping Costs: " + shipping + "€";
 	document.getElementById('tax').innerHTML = "Tax (22%): " + tax.toFixed(2) + "€";
 	document.getElementById('disc').innerHTML = "Discount: -" + disc.toFixed(2) + "€";
-	document.getElementById('sum').innerHTML = "<b>Total Cost: " + sum.toFixed(2) + "€</b>";
+	document.getElementById('sum').innerHTML = "<b>Total Cost: " + $rawsum.toFixed(2) + "€</b>";
 }
 
 function Del(k) {
