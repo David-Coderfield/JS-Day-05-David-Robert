@@ -16,16 +16,18 @@ var item5 = new ItemConstructor(5, 'Superduper Fancy Item Numero ', 49.90, 'http
 
 var items = [item0, item1, item2, item3, item4, item5];
 
-function itemPlacer(item) {
+// CREATE NEW DIV AND CONTENT FOR EACH ITEM
+function divCreator(item) {
 	var newDiv = document.createElement("div");
-	newDiv.innerHTML = eval(item).image + "<p>" + eval(item).name + "</p><p>" + eval(item).price + "</p> <input type='button' value='Add to Cart' class='btn'>"
+	newDiv.innerHTML = eval(item).image + "<p>" + eval(item).name + "</p><p>€" + eval(item).price + "</p> <input type='button' value='Add to Cart' class='btn'>"
 	newDiv.className = "item";
 	document.getElementById("product-wrapper").appendChild(newDiv);
 	}
 
+// CALL divCreator and add an Event listener to each button
 function inventory(array) {
 	for (let i=0; i<array.length; i++) {
-		itemPlacer(array[i]);
+		divCreator(array[i]);
 	}
 	var buttons = document.getElementsByClassName('btn');
 	for (let i=0;i<buttons.length;i++) {
@@ -33,9 +35,11 @@ function inventory(array) {
 												addToCart(i);
 													})}
 }
-
 inventory(items);
 
+
+
+//SHOPPING CARD STUFF
 var cart = [];
 
 function addToCart(i) {
@@ -107,7 +111,7 @@ function Update() {
 	document.getElementById('shipping').innerHTML = "Shipping Costs: " + shipping + "€";
 	document.getElementById('tax').innerHTML = "Tax (22%): " + tax.toFixed(2) + "€";
 	document.getElementById('disc').innerHTML = "Discount: -" + disc.toFixed(2) + "€";
-	document.getElementById('sum').innerHTML = "Total Cost: " + sum.toFixed(2) + "€";
+	document.getElementById('sum').innerHTML = "<b>Total Cost: " + sum.toFixed(2) + "€</b>";
 }
 
 function Del(k) {
@@ -125,6 +129,7 @@ function changeAmnt(k, n) {
 	Update();
 }
 
+//SHOW & HIDE THE SHOPPING CART
 var hidden = true;
 function showCart() {
 	if(hidden){

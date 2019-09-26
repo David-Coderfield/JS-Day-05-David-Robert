@@ -51,12 +51,13 @@ input[type=number] {
   display: flex;
   flex-wrap: wrap;
   border:  1px solid black;
-  justify-content: space-between;
+  justify-content: start;
 }
 
 .item {
 	width: 200px;
 	border: 1px solid red;
+	margin: 1.2vw;
 }
 
 .item img {
@@ -112,4 +113,11 @@ table td {
 table {
   border: 2px solid #000;
   border-collapse: collapse;
+}
+
+.costs {
+	padding: 0 !important;
+	margin-top: 4px;
+	margin-bottom: 0px;
+
 }
