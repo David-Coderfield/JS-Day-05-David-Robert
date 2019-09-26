@@ -135,7 +135,7 @@ function showCart() {
 	if(hidden){
 		document.getElementById('link').innerHTML = 'Hide Cart';
 		document.getElementById('shoppingCart').style.display = 'flex';
-		document.getElementById('product-wrapper').style.width = '70%';
+		document.getElementById('product-wrapper').style.width = '62%';
 		hidden = false;
 	} else {
 		document.getElementById('link').innerHTML = 'Show Cart';

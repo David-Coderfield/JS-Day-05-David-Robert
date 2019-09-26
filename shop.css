@@ -46,7 +46,7 @@ input[type=number] {
 }
 
 #product-wrapper {
-  min-width: 70%;
+  width: 100%;
   height: auto;
   display: flex;
   flex-wrap: wrap;
@@ -65,7 +65,7 @@ input[type=number] {
 }
 
 #shoppingCart {
-  width: 27%;
+  width: 35%;
   display: flex;
   flex-wrap: wrap;
   flex-flow:  column;
@@ -86,15 +86,6 @@ div.Items {
   justify-content: space-around; 
 }
 
-div.Beaches {
-  display: flex;
-  justify-content: space-around; 
-}
-
-div.Lakes {
-  display: flex;
-  justify-content: space-around; 
-}
 
 footer {
   display: flex;
