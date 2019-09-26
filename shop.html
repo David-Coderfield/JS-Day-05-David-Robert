@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+	<meta charset='utf-8'>
+	<link rel='stylesheet' type='text/css' href='shop.css'>	
+	<title>Shop</title>
+</head>
+<body>
+	<header> 
+	<h1>Shop</h1>
+	</header>
+	<div class="container">
+	
+	<nav>
+		<ul>
+			<li><a href="" title="Contact">Contact</a></li>
+			<li><a href="" title="Information">Information</a></li>
+			<li><a href="" title="About Us">About Us</a></li>
+		</ul>
+	</nav>
+		
+		<div class=container2>
+		
+		<article class="Content">
+			<div class="Items">
+				<div class="Row" onclick="Shop('Item1', 9.90)">
+					<img src="https://via.placeholder.com/200x200.png?text=Item1" alt="Item1">
+					<p>1 <br> Price: 9.90€</p>
+				</div>	
+				<div class="Row" onclick="Shop('Item2', 19.90)">
+					<img src="https://via.placeholder.com/200x200.png?text=Item2" alt="Item2">
+					<p>2 <br> Price: 19.90€</p>
+				</div>
+				<div class="Row" onclick="Shop('Item3', 29.90)">
+					<img src="https://via.placeholder.com/200x200.png?text=Item3" alt="Item3">
+					<p>3 <br> Price: 29.90€</p>
+				</div>
+			</div>
+			
+			<div class="Items">
+				<div class="Row" onclick="Shop('Item4', 39.90)">
+					<img src="https://via.placeholder.com/200x200.png?text=Item4" alt="Item4">
+					<p>4 <br> Price: 39.90€</p>
+				</div>	
+				<div class="Row" onclick="Shop('Item5', 49.90)">
+					<img src="https://via.placeholder.com/200x200.png?text=Item5" alt="Item5">
+					<p>5 <br> Price: 49.90€</p>
+				</div>
+				<div class="Row" onclick="Shop('Item6', 59.90)">
+					<img src="https://via.placeholder.com/200x200.png?text=Item6" alt="Item6">
+					<p>6 <br> Price: 59.90€</p>
+				</div>
+			</div>
+			
+			<div class="Items">
+				<div class="Row" onclick="Shop('Item7', 69.90)">
+					<img src="https://via.placeholder.com/200x200.png?text=Item7" alt="Item7">	
+					<p>7 <br> Price: 69.90€</p>
+				</div>
+				<div class="Row" onclick="Shop('Item8', 79.90)">
+					<img src="https://via.placeholder.com/200x200.png?text=Item8" alt="Item8">
+					<p>8 <br> Price: 79.90€</p>
+				</div>
+				<div class="Row" onclick="Shop('Item9', 89.90)">
+					<img src="https://via.placeholder.com/200x200.png?text=Item9" alt="Item9">
+					<p>9 <br> Price: 89.90€</p>
+				</div>
+				
+			</div>
+		</article>
+
+		<div id=shoppingCart>
+			<p>This is a shopping cart</p>
+			<table id="shoptable">
+
+			</table>
+		<p id="sum"></p>
+
+
+		</div>
+		</div>
+
+	<footer>
+		<p>Best shop ever - all rights reserved</p>
+	</footer>
+</div>
+
+<script src="shop.js"></script>
+</body>
+</html>
