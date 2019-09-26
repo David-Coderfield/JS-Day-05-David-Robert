@@ -1,0 +1,36 @@
+var employees = `[{
+"uniqueId": "0",
+	"firstName": "Alex",
+	"lastName": "Alberich",
+	"eMail": "alex@gmx",
+	"jobTitle": "Anchorman",
+	"Salary": "10"
+}, {
+	"uniqueId": "1",
+	"firstName": "Bert",
+	"lastName": "Braeter",
+	"eMail": "balex@gmx",
+	"jobTitle": "Bieger",
+	"Salary": "11"
+},{
+	"uniqueId": "2",
+	"firstName": "Clemens",
+	"lastName": "Clown",
+	"eMail": "cc@gmx",
+	"jobTitle": "Clown",
+	"Salary": "12"
+},{
+	"uniqueId": "3",
+	"firstName": "Dave",
+	"lastName": "Daemlich",
+	"eMail": "du@gmx",
+	"jobTitle": "Denker",
+	"Salary": "13"
+},{
+	"uniqueId": "4",
+	"firstName": "Emil",
+	"lastName": "Emmerich",
+	"eMail": "ente@gmx",
+	"jobTitle": "Erntehelfer",
+	"Salary": "14"
+}]`;
